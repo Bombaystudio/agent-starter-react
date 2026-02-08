@@ -8,18 +8,19 @@ import {
   type TrackReferenceOrPlaceholder,
   useMultibandTrackVolume,
 } from '@livekit/components-react';
-import { useAgentAudioVisualizerRadialAnimator } from '@/hooks/agents-ui/use-agent-audio-visualizer-radial';
 import { cn } from '@/lib/shadcn/utils';
+import { useAgentAudioVisualizerRadialAnimator } from '@/hooks/agents-ui/use-agent-audio-visualizer-radial';
 
 export const AgentAudioVisualizerRadialVariants = cva(
   [
     'relative flex items-center justify-center',
-    '[&_[data-lk-index]]:absolute [&_[data-lk-index]]:top-1/2 [&_[data-lk-index]]:left-1/2 [&_[data-lk-index]]:origin-bottom [&_[data-lk-index]]:-translate-x-1/2',
-    '[&_[data-lk-index]]:rounded-full [&_[data-lk-index]]:transition-colors [&_[data-lk-index]]:duration-150 [&_[data-lk-index]]:ease-linear [&_[data-lk-index]]:bg-transparent [&_[data-lk-index]]:data-[lk-highlighted=true]:bg-current',
-    'has-data-[lk-state=connecting]:[&_[data-lk-index]]:duration-300 has-data-[lk-state=connecting]:[&_[data-lk-index]]:bg-current/10',
-    'has-data-[lk-state=initializing]:[&_[data-lk-index]]:duration-300 has-data-[lk-state=initializing]:[&_[data-lk-index]]:bg-current/10',
-    'has-data-[lk-state=listening]:[&_[data-lk-index]]:duration-300 has-data-[lk-state=listening]:[&_[data-lk-index]]:bg-current/10 has-data-[lk-state=listening]:[&_[data-lk-index]]:duration-300',
-    'has-data-[lk-state=thinking]:animate-spin has-data-[lk-state=thinking]:[animation-duration:5s] has-data-[lk-state=thinking]:[&_[data-lk-index]]:bg-current',
+    '**:data-lk-index:bg-current/10',
+    '**:data-lk-index:absolute **:data-lk-index:top-1/2 **:data-lk-index:left-1/2 **:data-lk-index:origin-bottom **:data-lk-index:-translate-x-1/2',
+    '**:data-lk-index:rounded-full **:data-lk-index:transition-colors **:data-lk-index:duration-150 **:data-lk-index:ease-linear **:data-lk-index:data-[lk-highlighted=true]:bg-current',
+    'has-data-[lk-state=connecting]:**:data-lk-index:duration-300',
+    'has-data-[lk-state=initializing]:**:data-lk-index:duration-300',
+    'has-data-[lk-state=listening]:**:data-lk-index:duration-300 has-data-[lk-state=listening]:**:data-lk-index:duration-300',
+    'has-data-[lk-state=thinking]:animate-spin has-data-[lk-state=thinking]:[animation-duration:5s] has-data-[lk-state=thinking]:**:data-lk-index:bg-current',
   ],
   {
     variants: {
@@ -34,7 +35,7 @@ export const AgentAudioVisualizerRadialVariants = cva(
     defaultVariants: {
       size: 'md',
     },
-  }
+  },
 );
 
 /**
@@ -159,11 +160,11 @@ export function AgentAudioVisualizerRadial({
   const highlightedIndices = useAgentAudioVisualizerRadialAnimator(
     state,
     _barCount,
-    sequencerInterval
+    sequencerInterval,
   );
   const bands = useMemo(
     () => (audioTrack ? volumeBands : new Array(_barCount).fill(0)),
-    [audioTrack, volumeBands, _barCount]
+    [audioTrack, volumeBands, _barCount],
   );
 
   const dotSize = useMemo(() => {

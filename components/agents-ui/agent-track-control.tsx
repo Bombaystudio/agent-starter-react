@@ -8,6 +8,7 @@ import {
   useMaybeRoomContext,
   useMediaDeviceSelect,
 } from '@livekit/components-react';
+
 import { AgentAudioVisualizerBar } from '@/components/agents-ui/agent-audio-visualizer-bar';
 import { AgentTrackToggle } from '@/components/agents-ui/agent-track-toggle';
 import {
@@ -17,8 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { toggleVariants } from '@/components/ui/toggle';
 import { cn } from '@/lib/shadcn/utils';
+import { toggleVariants } from '@/components/ui/toggle';
 
 const selectVariants = cva(
   [
@@ -36,7 +37,7 @@ const selectVariants = cva(
           'border-none',
           'peer-data-[state=off]/track:bg-destructive/10',
           'peer-data-[state=off]/track:hover:bg-destructive/15',
-          'peer-data-[state=off]/track:[&_svg]:!text-destructive',
+          'peer-data-[state=off]/track:[&_svg]:text-destructive!',
 
           'dark:peer-data-[state=on]/track:bg-accent',
           'dark:peer-data-[state=on]/track:hover:bg-foreground/10',
@@ -48,7 +49,7 @@ const selectVariants = cva(
           'peer-data-[state=off]/track:border-destructive/20',
           'peer-data-[state=off]/track:bg-destructive/10',
           'peer-data-[state=off]/track:hover:bg-destructive/15',
-          'peer-data-[state=off]/track:[&_svg]:!text-destructive',
+          'peer-data-[state=off]/track:[&_svg]:text-destructive!',
           'peer-data-[state=on]/track:hover:border-foreground/12',
 
           'dark:peer-data-[state=off]/track:bg-destructive/10',
@@ -66,7 +67,7 @@ const selectVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 );
 
 /**
@@ -273,7 +274,7 @@ export function AgentTrackControl({
       className={cn(
         'flex items-center gap-0 rounded-md',
         variant === 'outline' && 'shadow-xs [&_button]:shadow-none',
-        className
+        className,
       )}
     >
       <AgentTrackToggle
@@ -283,7 +284,7 @@ export function AgentTrackControl({
         pending={pending}
         disabled={disabled}
         onPressedChange={onPressedChange}
-        className="peer/track group/track focus:z-10 has-[.audiovisualizer]:w-auto has-[.audiovisualizer]:px-3 has-[~_button]:rounded-r-none has-[~_button]:border-r-0 has-[~_button]:pr-2 has-[~_button]:pl-3"
+        className="peer/track group/track has-[.audiovisualizer]:w-auto has-[.audiovisualizer]:px-3 has-[~_button]:rounded-r-none has-[~_button]:pr-2 has-[~_button]:pl-3 has-[~_button]:border-r-0 focus:z-10"
       >
         {audioTrack && (
           <AgentAudioVisualizerBar
