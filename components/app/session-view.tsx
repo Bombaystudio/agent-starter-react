@@ -1,4 +1,6 @@
 'use client';
+import type { Variants, MotionProps } from "motion/react";
+import { easeInOut } from "motion";
 
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
@@ -17,7 +19,7 @@ const MotionBottom = motion.create('div');
 
 const MotionMessage = motion.create(Shimmer);
 
-const BOTTOM_VIEW_MOTION_PROPS = {
+const BOTTOM_VIEW_MOTION_PROPS: MotionProps & { variants: Variants } = {
   variants: {
     visible: {
       opacity: 1,
@@ -34,16 +36,16 @@ const BOTTOM_VIEW_MOTION_PROPS = {
   transition: {
     duration: 0.3,
     delay: 0.5,
-    ease: 'easeOut',
+    ease: easeInOut,
   },
 };
 
-const SHIMMER_MOTION_PROPS = {
+const SHIMMER_MOTION_PROPS: MotionProps & { variants: Variants } = {
   variants: {
     visible: {
       opacity: 1,
       transition: {
-        ease: 'easeIn',
+        ease: easeInOut,
         duration: 0.5,
         delay: 0.8,
       },
@@ -51,7 +53,7 @@ const SHIMMER_MOTION_PROPS = {
     hidden: {
       opacity: 0,
       transition: {
-        ease: 'easeIn',
+        ease: easeInOut,
         duration: 0.5,
         delay: 0,
       },
