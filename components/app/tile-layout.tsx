@@ -1,3 +1,4 @@
+import { spring, type Transition } from "motion";
 import React, { useMemo } from 'react';
 import { Track } from 'livekit-client';
 import { AnimatePresence, motion } from 'motion/react';
@@ -14,7 +15,7 @@ import { cn } from '@/lib/shadcn/utils';
 const MotionContainer = motion.create('div');
 
 const ANIMATION_TRANSITION = {
-  type: 'spring',
+  type: spring,
   stiffness: 675,
   damping: 75,
   mass: 1,
