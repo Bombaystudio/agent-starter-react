@@ -1,10 +1,10 @@
 'use client';
 
 import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
+import type { Variants } from 'motion/react';
 import { type ReceivedMessage, useAgent } from '@livekit/components-react';
 import { AgentChatTranscript } from '@/components/agents-ui/agent-chat-transcript';
 import { cn } from '@/lib/shadcn/utils';
-import type { Variants } from "motion/react";
 
 const MotionContainer = motion.create('div');
 
@@ -31,11 +31,10 @@ const CONTAINER_MOTION_PROPS: {
       },
     },
   },
-  initial: "hidden",
-  animate: "visible",
-  exit: "hidden",
+  initial: 'hidden',
+  animate: 'visible',
+  exit: 'hidden',
 };
-
 
 interface ChatTranscriptProps {
   hidden?: boolean;

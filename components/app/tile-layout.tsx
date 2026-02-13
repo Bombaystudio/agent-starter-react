@@ -1,6 +1,6 @@
-import { spring, type Transition } from "motion";
 import React, { useMemo } from 'react';
 import { Track } from 'livekit-client';
+import { type Transition, spring } from 'motion';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   type TrackReference,

@@ -1,8 +1,8 @@
 'use client';
-import type { Variants, MotionProps } from "motion/react";
-import { easeInOut } from "motion";
 
 import React, { useEffect, useRef, useState } from 'react';
+import { easeInOut } from 'motion';
+import type { MotionProps, Variants } from 'motion/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useSessionContext, useSessionMessages } from '@livekit/components-react';
 import type { AppConfig } from '@/app-config';
