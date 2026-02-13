@@ -1,18 +1,24 @@
 'use client';
-import { easeInOut } from "motion";
+
 import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
 import { type ReceivedMessage, useAgent } from '@livekit/components-react';
 import { AgentChatTranscript } from '@/components/agents-ui/agent-chat-transcript';
 import { cn } from '@/lib/shadcn/utils';
+import type { Variants } from "motion/react";
 
 const MotionContainer = motion.create('div');
 
-const CONTAINER_MOTION_PROPS = {
+const CONTAINER_MOTION_PROPS: {
+  variants: Variants;
+  initial: string;
+  animate: string;
+  exit: string;
+} = {
   variants: {
     hidden: {
       opacity: 0,
       transition: {
-        ease: easeInOut,
+        ease: [0.42, 0, 0.58, 1],
         duration: 0.3,
       },
     },
@@ -20,15 +26,16 @@ const CONTAINER_MOTION_PROPS = {
       opacity: 1,
       transition: {
         delay: 0.2,
-        ease: easeInOut,
+        ease: [0.42, 0, 0.58, 1],
         duration: 0.3,
       },
     },
   },
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
+  initial: "hidden",
+  animate: "visible",
+  exit: "hidden",
 };
+
 
 interface ChatTranscriptProps {
   hidden?: boolean;

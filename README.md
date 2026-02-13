@@ -163,3 +163,10 @@ These are required for the voice agent functionality to work with your LiveKit p
 ## Contributing
 
 This template is open source and we welcome contributions! Please open a PR or issue through GitHub, and don't forget to join us in the [LiveKit Community Slack](https://livekit.io/join-slack)!
+
+# to add to GIT - password the one used for computer. 
+
+git status                                                   
+git add .
+git commit -m "Fix motion v12 issues"
+git push

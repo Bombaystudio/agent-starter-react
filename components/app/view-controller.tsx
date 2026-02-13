@@ -11,19 +11,15 @@ const MotionSessionView = motion.create(SessionView);
 
 const VIEW_MOTION_PROPS = {
   variants: {
-    visible: {
-      opacity: 1,
-    },
-    hidden: {
-      opacity: 0,
-    },
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
   },
   initial: 'hidden',
   animate: 'visible',
   exit: 'hidden',
   transition: {
     duration: 0.5,
-    ease: 'linear',
+    ease: [0, 0, 1, 1] as const, // equivalent of linear
   },
 };
 
@@ -36,7 +32,6 @@ export function ViewController({ appConfig }: ViewControllerProps) {
 
   return (
     <AnimatePresence mode="wait">
-      {/* Welcome view */}
       {!isConnected && (
         <MotionWelcomeView
           key="welcome"
@@ -45,9 +40,13 @@ export function ViewController({ appConfig }: ViewControllerProps) {
           onStartCall={start}
         />
       )}
-      {/* Session view */}
+
       {isConnected && (
-        <MotionSessionView key="session-view" {...VIEW_MOTION_PROPS} appConfig={appConfig} />
+        <MotionSessionView
+          key="session"
+          {...VIEW_MOTION_PROPS}
+          appConfig={appConfig}
+        />
       )}
     </AnimatePresence>
   );

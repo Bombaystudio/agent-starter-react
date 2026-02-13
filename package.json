@@ -12,7 +12,7 @@
     "shadcn:install": "pnpm dlx shadcn@latest add @agents-ui/agent-audio-visualizer-bar @agents-ui/agent-audio-visualizer-grid @agents-ui/agent-audio-visualizer-radial @agents-ui/agent-control-bar @agents-ui/agent-session-provider @agents-ui/agent-track-control @agents-ui/agent-track-toggle @agents-ui/agent-chat-transcript @agents-ui/agent-chat-indicator @agents-ui/start-audio-button"
   },
   "dependencies": {
-    "@livekit/components-react": "^2.9.18",
+    "@livekit/components-react": "^2.9.19",
     "@livekit/protocol": "^1.44.0",
     "@phosphor-icons/react": "^2.1.8",
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -42,7 +42,7 @@
     "lucide-react": "^0.555.0",
     "media-chrome": "^4.17.2",
     "mime": "^4.0.7",
-    "motion": "^12.16.0",
+    "motion": "^12.34.0",
     "nanoid": "^5.1.6",
     "next": "^15.5.12",
     "next-themes": "^0.4.6",
