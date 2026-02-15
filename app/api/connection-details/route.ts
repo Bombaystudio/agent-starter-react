@@ -14,8 +14,10 @@ export async function POST(req: Request) {
     return new NextResponse('Missing environment variables', { status: 500 });
   }
 
-  const body = await req.json();
-  const agentName = 'voice-assistant';
+const body = await req.json();
+const agentName: string | undefined =
+  body?.room_config?.agents?.[0]?.agent_name;
+
 
   const participantIdentity = `user_${Math.floor(Math.random() * 10000)}`;
   const roomName = `room_${Math.floor(Math.random() * 10000)}`;
