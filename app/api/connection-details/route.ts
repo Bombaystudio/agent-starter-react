@@ -19,8 +19,10 @@ const agentName: string | undefined = body?.room_config?.agents?.[0]?.agent_name
 
 
 
-const participantIdentity = `user_${Math.floor(Math.random() * 10000)}`;
-const roomName = `room_${Math.floor(Math.random() * 10000)}`;
+const participantName = 'user';
+const participantIdentity = `voice_user_${Math.floor(Math.random() * 10000)}`;
+const roomName = `voice_room_${Math.floor(Math.random() * 10000)}`;
+
 
 const token = createParticipantToken({ identity: participantIdentity }, roomName, agentName);
 
