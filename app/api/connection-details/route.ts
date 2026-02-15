@@ -14,25 +14,28 @@ export async function POST(req: Request) {
     return new NextResponse('Missing environment variables', { status: 500 });
   }
 
-const body = await req.json();  
-const agentName: string | undefined = body?.room_config?.agents?.[0]?.agent_name;
+  const body = await req.json();
+  const agentName: string | undefined =
+    body?.room_config?.agents?.[0]?.agent_name;
 
+  const participantName = 'user';
+  const participantIdentity = `voice_user_${Math.floor(Math.random() * 10000)}`;
+  const roomName = `voice_room_${Math.floor(Math.random() * 10000)}`;
 
-
-const participantName = 'user';
-const participantIdentity = `voice_user_${Math.floor(Math.random() * 10000)}`;
-const roomName = `voice_room_${Math.floor(Math.random() * 10000)}`;
-
-
-const token = createParticipantToken({ identity: participantIdentity }, roomName, agentName);
+  const participantToken = await createParticipantToken(
+    { identity: participantIdentity, name: participantName },
+    roomName,
+    agentName
+  );
 
   return NextResponse.json({
-    serverUrl: LIVEKIT_URL,
+    server_url: LIVEKIT_URL,
     room_name: roomName,
     participant_token: participantToken,
     participant_name: participantName,
   });
 }
+
 
 async function createParticipantToken(
   userInfo: AccessTokenOptions,
