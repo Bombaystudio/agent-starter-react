@@ -26,9 +26,9 @@ const token = createParticipantToken({ identity: participantIdentity }, roomName
 
   return NextResponse.json({
     serverUrl: LIVEKIT_URL,
-    roomName,
-    participantToken: token,
-    participantName: 'user',
+    room_name: roomName,
+    participant_token: participantToken,
+    participant_name: participantName,
   });
 }
 
