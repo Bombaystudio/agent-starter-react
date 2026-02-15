@@ -1,7 +1,10 @@
-
 import { NextResponse } from 'next/server';
 import { AccessToken, type AccessTokenOptions, type VideoGrant } from 'livekit-server-sdk';
 import { RoomConfiguration } from '@livekit/protocol';
+
+export const runtime = 'nodejs';
+// don't cache the results
+export const revalidate = 0;
 
 type ConnectionDetails = {
   serverUrl: string;
@@ -15,9 +18,6 @@ const API_KEY = process.env.LIVEKIT_API_KEY;
 const API_SECRET = process.env.LIVEKIT_API_SECRET;
 const LIVEKIT_URL = process.env.LIVEKIT_URL;
 
-export const runtime = 'nodejs';
-// don't cache the results
-export const revalidate = 0;
 
 export async function POST(req: Request) {
   try {
