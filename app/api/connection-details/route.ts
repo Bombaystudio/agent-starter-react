@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const agentName = "voice-assistant";
+  const agentName = 'voice-assistant';
 
   const participantIdentity = `user_${Math.floor(Math.random() * 10000)}`;
   const roomName = `room_${Math.floor(Math.random() * 10000)}`;
